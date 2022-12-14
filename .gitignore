@@ -19,3 +19,9 @@ doc/api/
 *.js_
 *.js.deps
 *.js.map
+flutter_chart/.fvm/flutter_sdk
+flutter_chart/.fvm/fvm_config.json
+.DS_Store
+flutter_chart/.vscode/launch.json
+flutter_chart/.metadata
+flutter_chart/analysis_options.yaml
