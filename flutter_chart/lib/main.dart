@@ -56,21 +56,21 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     List<List<ChartModel>> listData = [];
     listData = [
-      [
-        ChartModel(
-            time: "T1", value: Random().nextInt(100000000), color: Colors.blue),
-        ChartModel(time: "T2", value: Random().nextInt(100000000)),
-        ChartModel(time: "T3", value: Random().nextInt(100000000)),
-        ChartModel(time: "T4", value: Random().nextInt(100000000)),
-        ChartModel(time: "T5", value: Random().nextInt(100000000)),
-        ChartModel(time: "T6", value: Random().nextInt(100000000)),
-        ChartModel(time: "T7", value: Random().nextInt(100000000)),
-        ChartModel(time: "T8", value: Random().nextInt(100000000)),
-        ChartModel(time: "T9", value: Random().nextInt(100000000)),
-        ChartModel(time: "T10", value: Random().nextInt(100000000)),
-        ChartModel(time: "T11", value: Random().nextInt(100000000)),
-        ChartModel(time: "T12", value: Random().nextInt(100000000)),
-      ],
+      // [
+      //   ChartModel(
+      //       time: "T1", value: Random().nextInt(100000000), color: Colors.blue),
+      //   ChartModel(time: "T2", value: Random().nextInt(100000000)),
+      //   ChartModel(time: "T3", value: Random().nextInt(100000000)),
+      //   ChartModel(time: "T4", value: Random().nextInt(100000000)),
+      //   ChartModel(time: "T5", value: Random().nextInt(100000000)),
+      //   ChartModel(time: "T6", value: Random().nextInt(100000000)),
+      //   ChartModel(time: "T7", value: Random().nextInt(100000000)),
+      //   ChartModel(time: "T8", value: Random().nextInt(100000000)),
+      //   ChartModel(time: "T9", value: Random().nextInt(100000000)),
+      //   ChartModel(time: "T10", value: Random().nextInt(100000000)),
+      //   ChartModel(time: "T11", value: Random().nextInt(100000000)),
+      //   ChartModel(time: "T12", value: Random().nextInt(100000000)),
+      // ],
       [
         ChartModel(
             time: "T1", value: Random().nextInt(100000000), color: Colors.red),

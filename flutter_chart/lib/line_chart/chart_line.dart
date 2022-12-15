@@ -83,7 +83,7 @@ class MyCustomPaint extends CustomPainter {
       this.color = Colors.black})
       : super();
 
-  static const double paddingX = 40;
+  static const double paddingX = 60;
   static const double paddingY = 10;
   double jump = 20;
 
@@ -141,10 +141,10 @@ class MyCustomPaint extends CustomPainter {
         ..strokeCap = StrokeCap.round;
 
       for (int iii = 0; iii < listOffset.length; iii++) {
+        /// shadow cho các point
         var path = Path()
           ..addOval(Rect.fromCircle(center: listOffset[iii], radius: 4.0));
         canvas.drawShadow(path, const Color(0xff000000), 5, true);
-        // item[iii].offset = Offset(listOffset[iii].dx, listOffset[iii].dy);
 
         if (position != null &&
             (position!.dx >= (listOffset[iii].dx - widthNext / 2) &&
@@ -165,9 +165,24 @@ class MyCustomPaint extends CustomPainter {
       // final p1 = const Offset(50, 100);
       // final p2 = const Offset(150, 75);
 
+      Path pathBelow = Path();
+
+      ///Dùng để below color line
+      // Paint barAreaPaint = Paint()
+      //   ..style = PaintingStyle.fill
+      //   ..color = item.first.color.withOpacity(.2);
+      // pathBelow.moveTo(listOffset.first.dx, listOffset.first.dy);
+
       for (int i = 0; (i + 1) < listOffset.length; i++) {
         canvas.drawLine(listOffset[i], listOffset[i + 1], paint2);
+        // pathBelow.lineTo(listOffset[i + 1].dx, listOffset[i + 1].dy);
+        // if ((i + 1) == listOffset.length - 1) {
+        //   pathBelow.lineTo(listOffset[i + 1].dx, size.height - paddingY);
+        // }
       }
+      // pathBelow.lineTo(paddingX, size.height - paddingY);
+
+      // canvas.drawPath(pathBelow, barAreaPaint);
 
       canvas.drawPoints(pointMode, listOffset, paint);
       // canvas.save();
@@ -347,9 +362,8 @@ class MyCustomPaint extends CustomPainter {
       // minWidth: 0,
       maxWidth: paddingX,
     );
-    // final xCenter = (size.width - textPainter.width) / 2;
-    // final yCenter = (size.height - textPainter.height) / 2;
-    final offset = Offset(x, size.height - paddingY);
+    final widthText = valueNext / listData[index - 1].time.length;
+    final offset = Offset(x - widthText / 2, size.height - paddingY);
     textPainter.paint(canvas, offset);
 
     debugPrint("xxxx: $x");
