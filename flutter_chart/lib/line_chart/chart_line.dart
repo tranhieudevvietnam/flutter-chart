@@ -244,18 +244,6 @@ class MyCustomPaint extends CustomPainter {
     const int dashWidth = 1;
     const int dashSpace = 5;
 
-    // // Start to draw from left size.
-    // // Of course, you can change it to match your requirement.
-    // double startX = 0;
-    // double y = 10;
-    // // Repeat drawing until we reach the right edge.
-    // // In our example, size.with = 300 (from the SizedBox)
-    // while (startX < size.width) {
-    //   // Draw a small line.
-    //   canvas.drawLine(Offset(startX, y), Offset(startX + dashWidth, y), paint);
-    //   // Update the starting X
-    //   startX += dashWidth + dashSpace;
-    // }
     // Start to draw from left size.
     // Of course, you can change it to match your requirement.
     double startX = start ?? 0;
@@ -269,26 +257,6 @@ class MyCustomPaint extends CustomPainter {
       startX += dashWidth + dashSpace;
     }
   }
-
-  // _initDrawDashedLine({
-  //   required Canvas canvas,
-  //   required Size size,
-  //   double y = paddingY,
-  //   required double valueNext,
-  // }) {
-  //   final Paint paint3 = Paint()
-  //     ..color = const Color(0xffE7E7E8)
-  //     ..strokeCap = StrokeCap.square
-  //     ..strokeWidth = 2;
-  //   _drawDashedLine(canvas, size, y, paint3, start: paddingX);
-  //   _initDrawDashedLine(
-  //       canvas: canvas, size: size, y: y + valueNext, valueNext: valueNext);
-  //   // print("xxxx---$y");
-  //   // if (y + valueNext < size.height) {
-  //   //   _initDrawDashedLine(
-  //   //       canvas: canvas, size: size, y: y + valueNext, valueNext: valueNext);
-  //   // }
-  // }
 
   _initDrawTextLeftColumn({
     required Canvas canvas,
@@ -362,12 +330,8 @@ class MyCustomPaint extends CustomPainter {
       // minWidth: 0,
       maxWidth: paddingX,
     );
-    final widthText = valueNext / listData[index - 1].time.length;
-    final offset = Offset(x - widthText / 2, size.height - paddingY);
+    final offset = Offset(x - 2, size.height - paddingY);
     textPainter.paint(canvas, offset);
-
-    debugPrint("xxxx: $x");
-    debugPrint("valueNext: $valueNext");
 
     if (index < listData.length) {
       _initDrawTextLeftRow(
