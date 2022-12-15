@@ -123,6 +123,7 @@ class MyCustomPaint extends CustomPainter {
     );
 
     for (var item in listData) {
+      //Lấy list toạ độ dùng cho việc chấm điểm và vẽ line
       List<Offset> listOffset = _getListOffsetByListData(
           listData: item,
           heightNext: heightNext,
@@ -162,28 +163,31 @@ class MyCustomPaint extends CustomPainter {
       final paint2 = Paint()
         ..color = item.first.color
         ..strokeWidth = 3;
-      // final p1 = const Offset(50, 100);
-      // final p2 = const Offset(150, 75);
 
       Path pathBelow = Path();
+      for (int i = 0; (i + 1) < listOffset.length; i++) {
+        canvas.drawLine(listOffset[i], listOffset[i + 1], paint2);
+      }
 
-      ///Dùng để below color line
+      //#region below color line
+
       // Paint barAreaPaint = Paint()
       //   ..style = PaintingStyle.fill
       //   ..color = item.first.color.withOpacity(.2);
       // pathBelow.moveTo(listOffset.first.dx, listOffset.first.dy);
 
-      for (int i = 0; (i + 1) < listOffset.length; i++) {
-        canvas.drawLine(listOffset[i], listOffset[i + 1], paint2);
-        // pathBelow.lineTo(listOffset[i + 1].dx, listOffset[i + 1].dy);
-        // if ((i + 1) == listOffset.length - 1) {
-        //   pathBelow.lineTo(listOffset[i + 1].dx, size.height - paddingY);
-        // }
-      }
+      // for (int i = 0; (i + 1) < listOffset.length; i++) {
+      //   canvas.drawLine(listOffset[i], listOffset[i + 1], paint2);
+      // pathBelow.lineTo(listOffset[i + 1].dx, listOffset[i + 1].dy);
+      // if ((i + 1) == listOffset.length - 1) {
+      //   pathBelow.lineTo(listOffset[i + 1].dx, size.height - paddingY);
+      // }
+      // }
       // pathBelow.lineTo(paddingX, size.height - paddingY);
 
       // canvas.drawPath(pathBelow, barAreaPaint);
 
+      //#endregion
       canvas.drawPoints(pointMode, listOffset, paint);
       // canvas.save();
     }
@@ -221,7 +225,6 @@ class MyCustomPaint extends CustomPainter {
       required int index,
       required List<Offset> listOffset,
       double x = paddingX}) {
-    debugPrint("valueNext2: $valueNext");
     var dy = heightNext / (jump / listData[index].value.toDouble()) +
         (paddingY * 1.5);
     var dy2 = (size.height - paddingY) - dy;
