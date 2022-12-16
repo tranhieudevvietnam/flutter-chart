@@ -44,8 +44,13 @@ class _ChartsLineState extends State<ChartsLine> {
     // print("posision: ${position}");
     return Center(
       child: Listener(
+        onPointerMove: (event) {
+          setState(() {
+            position = event.position;
+          });
+        },
         onPointerDown: (event) {
-          // print("posision: ${event.position}");
+          print("posision: ${event.position}");
           setState(() {
             position = event.position;
           });

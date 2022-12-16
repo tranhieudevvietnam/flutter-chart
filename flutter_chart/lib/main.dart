@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'line_chart/chart_line.dart';
+import 'pie_chart_example.dart';
 
 void main() {
   runApp(const MyApp());
@@ -99,8 +100,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            const PieChartExample(),
             ChartsLine(
               height: 300,
               colorSelect: Colors.yellow,
