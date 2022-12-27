@@ -52,16 +52,23 @@ class PieChartPaint extends CustomPainter {
     final sectionsAngle = calculateSectionsAngle(sumValue);
 
     final center = Offset(viewSize.width / 2, viewSize.height / 2);
+    debugPrint('center: $center');
 
     final touchedPoint2 = localPosition - center;
 
     final touchX = touchedPoint2.dx;
     final touchY = touchedPoint2.dy;
-    final aaa = math.pow(touchY, 2);
-    final bbb = math.pow(touchX, 2);
+    debugPrint('touchX: $touchX');
+    debugPrint('touchY: $touchY');
+
+    // final touchR = math.sqrt(math.pow(touchX, 2) + math.pow(touchY, 2));
     final touchR = math.sqrt(math.pow(touchX, 2) + math.pow(touchY, 2));
+
     var touchAngle = Utils().degrees(math.atan2(touchY, touchX));
     touchAngle = touchAngle < 0 ? (180 - touchAngle.abs()) + 180 : touchAngle;
+
+    debugPrint('touchR: $touchR');
+    debugPrint('touchAngle: $touchAngle');
 
     PieChartData? foundSectionData;
     var foundSectionDataPosition = -1;
@@ -91,6 +98,10 @@ class PieChartPaint extends CustomPainter {
       final centerRadius = calculateCenterRadius(viewSize);
       final sectionRadius = centerRadius + section.radius;
       final isInRadius = touchR > centerRadius && touchR <= sectionRadius;
+      debugPrint(
+          "fromDegree - ${sections[i].title}: $fromDegree  -  toDegree: $toDegree");
+      debugPrint(
+          "sectionRadius - ${sections[i].title}: $sectionRadius - centerRadius: $centerRadius");
 
       if (isInDegree && isInRadius) {
         foundSectionData = section;

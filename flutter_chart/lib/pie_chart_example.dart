@@ -31,15 +31,25 @@ class _PieChartExampleState extends State<PieChartExample> {
       sectionsSpace: 0,
       centerSpaceRadius: 40,
     );
-    return Listener(
-      onPointerDown: (event) {
-        customPaint.handleTouch(
-          event.position,
-        );
-      },
-      child: CustomPaint(
-        size: const Size(300, 300),
-        painter: customPaint,
+    return SizedBox(
+      height: 300,
+      width: MediaQuery.of(context).size.width,
+      child: Listener(
+        onPointerDown: (event) {
+          //Here at the end and at the begining of the line
+          RenderBox? renderBox = context.findRenderObject() as RenderBox;
+          final position = renderBox.globalToLocal(event.position);
+          customPaint.handleTouch(
+            position,
+          );
+        },
+        child: Container(
+          color: Colors.green.shade200,
+          child: CustomPaint(
+            size: Size(MediaQuery.of(context).size.width, 300),
+            painter: customPaint,
+          ),
+        ),
       ),
     );
   }

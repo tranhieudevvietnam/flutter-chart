@@ -93,17 +93,18 @@ class _MyHomePageState extends State<MyHomePage> {
       // ],
     ];
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
+      body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            const SizedBox(
+              height: 100,
+            ),
             const PieChartExample(),
+            const SizedBox(
+              height: 30,
+            ),
             ChartsLine(
               height: 300,
               colorSelect: Colors.yellow,
